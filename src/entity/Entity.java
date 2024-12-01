@@ -1,5 +1,6 @@
 package entity;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public abstract class Entity {
@@ -9,6 +10,8 @@ public abstract class Entity {
     char direction; //Can be u, l, r, or d (Up Left Right Down)
     int spriteCounter = 0;
     boolean spriteState = true;
+    Rectangle collisionBox;
+    boolean collisionOn = false;
 
     /**
      * Normalise a 2-dim vector of movement coordinates,
@@ -22,7 +25,18 @@ public abstract class Entity {
         double distance = Math.hypot(mx, my);
         mx = (int) Math.rint(speed * (mx / distance));
         my = (int) Math.rint(speed * (my / distance));
-        int[] result = {mx, my};
-        return result;
+        return new int[]{mx, my};
+    }
+
+    public Rectangle getCollisionBox() {
+        return collisionBox;
+    }
+
+    public char getDirection() {
+        return direction;
+    }
+
+    public void setCollisionOn(boolean collisionOn) {
+        this.collisionOn = collisionOn;
     }
 }

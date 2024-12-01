@@ -2,12 +2,12 @@ package main;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class KeyHandler implements KeyListener {
 
-    private Map<Integer, Boolean> keyMaps = new HashMap<>();
+    private final Map<Integer, Boolean> keyMaps = new ConcurrentHashMap<>();
 
     public KeyHandler() {
         keyMaps.put(KeyEvent.VK_W, false);

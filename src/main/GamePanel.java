@@ -25,6 +25,7 @@ public class GamePanel extends JPanel implements Runnable {
   //Framerate
   int FPS = 30;
 
+  //Dependencies
   KeyHandler keyH;
 
   Thread gameThread;
@@ -32,10 +33,13 @@ public class GamePanel extends JPanel implements Runnable {
   Player player;
   TileManager tileManager;
 
+  CollisionDetector collisionDetector;
+
   public GamePanel() {
     keyH = new KeyHandler();
     tileManager  = new TileManager(this);
     player = new Player(this, keyH);
+    collisionDetector = new CollisionDetector(this);
 
     this.setPreferredSize(new Dimension(screenWidth, screenHeight));
     this.setBackground(Color.black);
@@ -129,5 +133,9 @@ public class GamePanel extends JPanel implements Runnable {
 
   public Player getPlayer() {
     return player;
+  }
+
+  public CollisionDetector getCollisionDetector() {
+    return collisionDetector;
   }
 }
